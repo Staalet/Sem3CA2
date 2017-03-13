@@ -87,7 +87,9 @@ public class FacadeCurrent
 
         try
         {
+            em.getTransaction().begin();
             em.persist(p);
+            em.getTransaction().commit();
         } finally
         {
             em.close();
