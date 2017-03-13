@@ -6,17 +6,19 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Staal
  */
 @Entity
-public class CityInfo extends Adress implements Serializable {
+public class CityInfo implements Serializable {
     
     public CityInfo(){
     }
@@ -27,7 +29,8 @@ public class CityInfo extends Adress implements Serializable {
     private Long id;
     private int zipCode;
     private String city;
-
+    @OneToMany(mappedBy = "cityinfo")
+    private List<Address> adresses;
     public Long getId() {
         return id;
     }

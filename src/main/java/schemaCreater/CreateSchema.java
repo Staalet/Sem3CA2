@@ -5,16 +5,18 @@
  */
 package schemaCreater;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
  *
  * @author Staal
  */
+public class CreateSchema {
 
-    public class CreateSchema {
     public static void main(String[] args) {
+        Persistence.createEntityManagerFactory("pu");
         Persistence.generateSchema("pu", null);
     }
 }
-

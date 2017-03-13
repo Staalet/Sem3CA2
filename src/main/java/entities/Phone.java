@@ -10,13 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Staal
  */
 @Entity
-public class Phone extends InfoEntity implements Serializable {
+public class Phone implements Serializable {
 
     public Phone(){
     }
@@ -27,6 +28,9 @@ public class Phone extends InfoEntity implements Serializable {
     private Long id;
     private int number;
     private String description;
+    @ManyToOne
+    private InfoEntity infoentity;
+    
     
     public Long getId() {
         return id;

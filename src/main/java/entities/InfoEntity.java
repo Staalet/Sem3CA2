@@ -6,11 +6,14 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -19,15 +22,21 @@ import javax.persistence.Id;
 @Entity
 public class InfoEntity implements Serializable {
 
-    public InfoEntity() {
-    }
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
     private String email;
+    @ManyToOne
+    private Address address;
+    @ManyToOne
+    private Address adress;
+    @OneToMany(mappedBy = "infoentity")
+    private List<Phone> phones;
+
+    public InfoEntity() {
+    }
+
 
     public Long getId() {
         return id;

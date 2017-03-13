@@ -6,19 +6,22 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Staal
  */
 @Entity
-public class Adress extends InfoEntity implements Serializable {
+public class Address extends InfoEntity implements Serializable {
     
-    public Adress(){
+    public Address(){
     }
 
     private static final long serialVersionUID = 1L;
@@ -27,7 +30,10 @@ public class Adress extends InfoEntity implements Serializable {
     private Long id;
     private String Street;
     private String AdditionalInfo;
-
+    @OneToMany(mappedBy = "adress")
+    private List <InfoEntity> infoentity;
+    @ManyToOne
+    private CityInfo cityinfo;
     public Long getId() {
         return id;
     }
