@@ -16,13 +16,18 @@ import javax.persistence.Id;
  * @author Staal
  */
 @Entity
-public class Phone implements Serializable {
+public class Phone extends InfoEntity implements Serializable {
 
+    public Phone(){
+    }
+    
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private int number;
+    private String description;
+    
     public Long getId() {
         return id;
     }
@@ -31,29 +36,32 @@ public class Phone implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    /**
+     * @return the number
+     */
+    public int getNumber() {
+        return number;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Phone)) {
-            return false;
-        }
-        Phone other = (Phone) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    /**
+     * @param number the number to set
+     */
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    @Override
-    public String toString() {
-        return "entities.Phone[ id=" + id + " ]";
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
     
 }
