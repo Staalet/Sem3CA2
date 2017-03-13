@@ -144,6 +144,7 @@ public class FacadeCurrent
         {
             List<CityInfo> ci = em.createQuery("SELECT zipCode FROM cityinfo").getResultList();
             return ci;
+            
         } finally
         {
             em.close(); 
