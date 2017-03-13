@@ -21,13 +21,13 @@
 </persistence>
  <persistence-unit name="PU_test" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.mycompany.ca2.entities.Address</class>
-    <class>com.mycompany.ca2.entities.CityInfo</class>
-    <class>com.mycompany.ca2.entities.Company</class>
-    <class>com.mycompany.ca2.entities.Hobby</class>
-    <class>com.mycompany.ca2.entities.InfoEntity</class>
-    <class>com.mycompany.ca2.entities.Person</class>
-    <class>com.mycompany.ca2.entities.Phone</class>
+   <class>entities.Phone</class>
+    <class>entities.Company</class>
+    <class>entities.Person</class>
+    <class>entities.Hobby</class>
+    <class>entities.CityInfo</class>
+    <class>entities.infoEntity</class>
+    <class>entities.Address</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory/ca2db;create=true"/>
