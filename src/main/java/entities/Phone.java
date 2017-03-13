@@ -19,17 +19,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Phone implements Serializable {
 
-    public Phone(){
-    }
-    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int number;
-    private String description;
+    private String description; 
     @ManyToOne
-    private InfoEntity infoentity;
+    private InfoEntity infoEntity;
+
+    public Phone(){
+    }
     
     
     public Long getId() {
