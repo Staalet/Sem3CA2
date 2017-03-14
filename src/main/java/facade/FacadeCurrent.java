@@ -1,6 +1,7 @@
 package facade;
 
 import entities.CityInfo;
+import entities.Company;
 import entities.Hobby;
 import entities.Person;
 import java.util.List;
@@ -126,6 +127,18 @@ public class FacadeCurrent {
         } finally {
             em.close();
         }
+    }
+
+    public List<Company> getCompanies(int employees) { //Gets the companies with x number of employees and above. 
+        EntityManager em = emf.createEntityManager();
+        
+        try {
+           return em.createQuery("SELECT u FROM company WHERE numEmployees <" + employees).getResultList(); 
+           
+        } finally {
+            em.close(); 
+        }
+
     }
 
 }
