@@ -16,6 +16,7 @@ import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -78,18 +79,14 @@ public class PersonResource {
         throw new UnsupportedOperationException();
     }
 
-//    @GET
-//    @Path("contactinfo/{id}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String getContactByID() {
-//        //TODO return proper representation object
-//        throw new UnsupportedOperationException();
-//    }
 
-    @POST
+    @DELETE
+    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createPerson(String content) {
-        //Must be implementet
+    public void deletePerson(@PathParam("id")long id) {
+        Person p = f.getPerson(id);
+        f.deletePerson(p.getId());
+        
     }
 
     /**

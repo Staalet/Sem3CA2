@@ -80,7 +80,7 @@ public class FacadeCurrent {
         }
     }
 
-    public void deletePerson(int id){//Removes a person, could be phonenumber instead. 
+    public void deletePerson(long id){//Removes a person, could be phonenumber instead. 
         EntityManager em = emf.createEntityManager();
 
         try {
