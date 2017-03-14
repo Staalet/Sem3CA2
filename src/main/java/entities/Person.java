@@ -46,10 +46,12 @@ public class Person extends InfoEntity implements Serializable {
         this.hobbies = hobbies;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
 
+    @Override
     public void setId(Long id) {
         this.id = id;
     }

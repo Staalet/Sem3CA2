@@ -13,6 +13,11 @@ import javax.persistence.EntityManagerFactory;
  */
 public class FacadeCurrent
 {
+    
+    public FacadeCurrent(EntityManagerFactory emf) {
+        this.emf = emf;
+    }
+    
 
     EntityManagerFactory emf;
 
@@ -30,9 +35,6 @@ public class FacadeCurrent
         }
     }
 
-    public FacadeCurrent(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
 
     public List<Person> getHobbies(String hobby)  //Returns a list of the persons who has the same hobbies.
     {
@@ -143,7 +145,7 @@ public class FacadeCurrent
         
         try
         {
-            List<CityInfo> ci = em.createQuery("SELECT zipCode FROM cityinfo").getResultList();
+            List<CityInfo> ci = em.createQuery("SELECT zip FROM cityinfo").getResultList();
             return ci;
             
         } finally
