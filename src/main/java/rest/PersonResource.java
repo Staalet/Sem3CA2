@@ -63,38 +63,42 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getPersonByID(@PathParam("id") long id) throws PersonNotFoundException {
         Person p = f.getPerson(id);
-        if(p == null){
+        if (p == null) {
             throw new PersonNotFoundException("No Person found");
         }
         return gson.toJson(p);
     }
 
-    @GET
-    @Path("contactinfo")
+    @POST
+    @Path("addPerson")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String getContact() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public String addPerson(String json) {
+
+        Person p = gson.fromJson(json, Person.class);
+        f.addPerson(p);
+        return gson.toJson(p);
     }
 
+    @PUT
+    @Path("editPerson")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String editPerson(String json) {
+
+        Person p = gson.fromJson(json, Person.class);
+        f.editPerson(p);
+
+        return gson.toJson(p);
+    }
 
     @DELETE
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void deletePerson(@PathParam("id")long id) {
+    public void deletePerson(@PathParam("id") long id) {
         Person p = f.getPerson(id);
         f.deletePerson(p.getId());
-        
-    }
 
-    /**
-     * PUT method for updating or creating an instance of CompanyResource
-     *
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void updatePersonByID(String content) {
     }
 
 }

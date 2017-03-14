@@ -20,7 +20,7 @@ public class FacadeCurrent {
 
     EntityManagerFactory emf;
 
-    public Person getPerson(long id){ //Kunne alternativt være telefonnummer
+    public Person getPerson(long id) { //Kunne alternativt være telefonnummer
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -30,8 +30,8 @@ public class FacadeCurrent {
         }
     }
 
-    public List<Person> getHobbies(String hobby){ //Returns a list of the persons who has the same hobbies.
-    
+    public List<Person> getHobbies(String hobby) { //Returns a list of the persons who has the same hobbies.
+
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -42,8 +42,8 @@ public class FacadeCurrent {
         }
     }
 
-    public int getHobbieCount(String hobby){ //Returns how many have the same hobbies. 
-    
+    public int getHobbieCount(String hobby) { //Returns how many have the same hobbies. 
+
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -80,7 +80,7 @@ public class FacadeCurrent {
         }
     }
 
-    public void deletePerson(long id){//Removes a person, could be phonenumber instead. 
+    public void deletePerson(long id) {//Removes a person, could be phonenumber instead. 
         EntityManager em = emf.createEntityManager();
 
         try {
@@ -99,21 +99,16 @@ public class FacadeCurrent {
         EntityManager em = emf.createEntityManager();
 
         try {
+
             em.getTransaction().begin();
-            Person pers = em.find(Person.class, p.getId());
-
-            if (p != null) {
-                p = pers;
-                em.merge(pers);
-                em.getTransaction().commit();
-                return p;
-            }
-
+            Person person = em.find(Person.class, p.getId());
+            p = em.merge(person);
+            em.getTransaction().commit();
+            return p;
         } finally {
             em.close();
         }
 
-        return null;
     }
 
     public List<CityInfo> getAllCities() {
