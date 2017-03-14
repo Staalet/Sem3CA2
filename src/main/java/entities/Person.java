@@ -12,12 +12,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author christian
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p")
+    , @NamedQuery(name = "Person.findById", query = "SELECT p FROM Person p WHERE p.id = :id")
+    , @NamedQuery(name = "Person.deleteById", query = "DELETE FROM Person p WHERE p.id = :id")
+})
+
 public class Person extends InfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,7 +45,7 @@ public class Person extends InfoEntity implements Serializable {
         this.lastName = lastName;
         this.hobbies = hobbies;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -69,5 +77,5 @@ public class Person extends InfoEntity implements Serializable {
     public void setHobbies(List<Hobby> hobbies) {
         this.hobbies = hobbies;
     }
-    
+
 }
