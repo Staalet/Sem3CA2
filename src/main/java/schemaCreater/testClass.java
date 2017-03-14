@@ -7,6 +7,7 @@ package schemaCreater;
 
 import entities.Person;
 import facade.FacadeCurrent;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
@@ -15,7 +16,7 @@ import javax.persistence.Persistence;
  */
 public class testClass {
     public static void main(String[] args) {
-        FacadeCurrent fc = new FacadeCurrent(emf);
+        FacadeCurrent fc = new FacadeCurrent(Persistence.createEntityManagerFactory("pu"));
         Person p = new Person();
         p.setFirstName("bjarne");
         p.setLastName("bjarne");
