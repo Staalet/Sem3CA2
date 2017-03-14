@@ -17,7 +17,7 @@ public class FacadeCurrent
     EntityManagerFactory emf;
 
     public Person getPerson(int id) //Kunne alternativt være telefonnummer
-
+            
     {
         EntityManager em = emf.createEntityManager();
 
@@ -28,6 +28,10 @@ public class FacadeCurrent
         {
             em.close();
         }
+    }
+
+    public FacadeCurrent(EntityManagerFactory emf) {
+        this.emf = emf;
     }
 
     public List<Person> getHobbies(String hobby)  //Returns a list of the persons who has the same hobbies.

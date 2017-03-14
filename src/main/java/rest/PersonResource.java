@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import entities.Person;
 import facade.FacadeCurrent;
 import java.util.List;
+import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -28,6 +29,7 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("person")
 public class PersonResource {
+
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Context
@@ -40,34 +42,36 @@ public class PersonResource {
     }
     /**
      * Retrieves representation of an instance of rest.PersonResource
+     *
      * @return an instance of java.lang.String
      */
+    FacadeCurrent f = new FacadeCurrent(Persistence.createEntityManagerFactory("pu"));
+
     @GET
     @Path("complete")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Person> getAllPersons() {
-        //TODO return proper representation object
         throw new UnsupportedOperationException();
+
     }
-    
+
     @GET
     @Path("complete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getPersonByID(@PathParam("id") int id) {
-        FacadeCurrent f = new FacadeCurrent();
         Person p = f.getPerson(id);
         String jPerson = gson.toJson(p);
         return jPerson;
-        
+
     }
-    
+
     @GET
     @Path("complete/{pnr}")
     @Produces(MediaType.APPLICATION_JSON)
     public Person getContactByPnumber(@PathParam("pnr") int pnr) {
         throw new UnsupportedOperationException();
     }
-    
+
     @GET
     @Path("contactinfo")
     @Produces(MediaType.APPLICATION_JSON)
@@ -75,7 +79,7 @@ public class PersonResource {
         //TODO return proper representation object
         throw new UnsupportedOperationException();
     }
-    
+
     @GET
     @Path("contactinfo/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -83,15 +87,16 @@ public class PersonResource {
         //TODO return proper representation object
         throw new UnsupportedOperationException();
     }
-    
-    
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void createPerson(String content) {
         //Must be implementet
     }
+
     /**
      * PUT method for updating or creating an instance of CompanyResource
+     *
      * @param content representation for the resource
      */
     @PUT
