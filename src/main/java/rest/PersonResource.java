@@ -60,8 +60,7 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getPersonByID(@PathParam("id") long id) {
         Person p = f.getPerson(id);
-        String jPerson = gson.toJson(p);
-        return jPerson;
+        return gson.toJson(p);
     }
 
     @GET
@@ -72,13 +71,13 @@ public class PersonResource {
         throw new UnsupportedOperationException();
     }
 
-    @GET
-    @Path("contactinfo/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getContactByID() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
+//    @GET
+//    @Path("contactinfo/{id}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String getContactByID() {
+//        //TODO return proper representation object
+//        throw new UnsupportedOperationException();
+//    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
