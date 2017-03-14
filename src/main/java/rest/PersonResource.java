@@ -73,12 +73,15 @@ public class PersonResource {
         return gson.toJson(p);
     }
 
-    @GET
-    @Path("contactinfo")
+    @POST
+    @Path("addPerson")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String getContact() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public String addPerson(String json) {
+
+        Person p = gson.fromJson(json, Person.class);
+        f.addPerson(p);
+        return gson.toJson(p);
     }
 
     @DELETE
@@ -92,15 +95,15 @@ public class PersonResource {
             throw new PersonNotFoundException("Found no person to delete. The person may not excist.");
         }
     }
-
-    /**
-     * PUT method for updating or creating an instance of CompanyResource
-     *
-     * @param content representation for the resource
-     */
     @PUT
+    @Path("editPerson")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void updatePersonByID(String content) {
-    }
+    @Produces(MediaType.APPLICATION_JSON)
+    public String editPerson(String json) {
 
+        Person p = gson.fromJson(json, Person.class);
+        f.editPerson(p);
+
+        return gson.toJson(p);
+    }
 }
