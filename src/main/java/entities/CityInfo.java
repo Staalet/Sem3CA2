@@ -5,13 +5,9 @@
  */
 package entities;
 
-import static entities.CityInfo_.zip;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 

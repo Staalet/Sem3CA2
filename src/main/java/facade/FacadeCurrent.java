@@ -21,7 +21,7 @@ public class FacadeCurrent
 
     EntityManagerFactory emf;
 
-    public Person getPerson(int id) //Kunne alternativt være telefonnummer
+    public Person getPerson(long id) //Kunne alternativt være telefonnummer
             
     {
         EntityManager em = emf.createEntityManager();

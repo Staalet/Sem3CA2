@@ -38,25 +38,25 @@ public class CompanyResource {
      * Retrieves representation of an instance of rest.CompanyResource
      * @return an instance of java.lang.String
      */
-    @GET
-    @Path("")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getContactByID() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-    
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void createPerson(String content) {
-        //Must be implementet
-    }
-    /**
-     * PUT method for updating or creating an instance of CompanyResource
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
-    }
+//    @GET
+//    @Path("")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String getContactByID() {
+//        //TODO return proper representation object
+//        throw new UnsupportedOperationException();
+//    }
+//    
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public void createPerson(String content) {
+//        //Must be implementet
+//    }
+//    /**
+//     * PUT method for updating or creating an instance of CompanyResource
+//     * @param content representation for the resource
+//     */
+//    @PUT
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public void putJson(String content) {
+//    }
 }

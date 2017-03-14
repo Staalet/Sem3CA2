@@ -58,18 +58,10 @@ public class PersonResource {
     @GET
     @Path("complete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getPersonByID(@PathParam("id") int id) {
+    public String getPersonByID(@PathParam("id") long id) {
         Person p = f.getPerson(id);
         String jPerson = gson.toJson(p);
         return jPerson;
-
-    }
-
-    @GET
-    @Path("complete/{pnr}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Person getContactByPnumber(@PathParam("pnr") int pnr) {
-        throw new UnsupportedOperationException();
     }
 
     @GET
