@@ -61,13 +61,11 @@ public class PersonResource {
     @Path("complete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getPersonByID(@PathParam("id") long id) throws PersonNotFoundException {
-        try{
         Person p = f.getPerson(id);
-        return gson.toJson(p);
-        }catch(NoResultException ex){
-            ex.printStackTrace();
-            throw new PersonNotFoundException("Not able to find a person with id " + id);
+        if(p == null){
+            throw new PersonNotFoundException("No Person found");
         }
+        return gson.toJson(p);
     }
 
     @GET
