@@ -5,11 +5,14 @@
  */
 package rest;
 
+import entities.Person;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
@@ -19,31 +22,37 @@ import javax.ws.rs.core.MediaType;
  *
  * @author christian
  */
-@Path("generic")
-public class GenericResource {
+@Path("company")
+public class CompanyResource {
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of GenericResource
+     * Creates a new instance of CompanyResource
      */
-    public GenericResource() {
+    public CompanyResource() {
     }
 
     /**
-     * Retrieves representation of an instance of rest.GenericResource
+     * Retrieves representation of an instance of rest.CompanyResource
      * @return an instance of java.lang.String
      */
     @GET
+    @Path("")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getJson() {
+    public String getContactByID() {
         //TODO return proper representation object
         throw new UnsupportedOperationException();
     }
-
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createPerson(String content) {
+        //Must be implementet
+    }
     /**
-     * PUT method for updating or creating an instance of GenericResource
+     * PUT method for updating or creating an instance of CompanyResource
      * @param content representation for the resource
      */
     @PUT
