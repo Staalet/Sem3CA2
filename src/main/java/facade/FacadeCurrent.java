@@ -16,11 +16,6 @@ public class FacadeCurrent
 
     EntityManagerFactory emf;
 
-    public FacadeCurrent(EntityManagerFactory emf)
-    {
-        this.emf = emf;
-    }
-
     public Person getPerson(int id) //Kunne alternativt være telefonnummer
 
     {
