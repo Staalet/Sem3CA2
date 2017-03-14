@@ -22,9 +22,6 @@ import javax.persistence.OneToMany;
 public class Address extends InfoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String Street;
     private String AdditionalInfo;
     @OneToMany(mappedBy = "adress")
@@ -33,14 +30,6 @@ public class Address extends InfoEntity implements Serializable {
     private CityInfo cityinfo;
 
     public Address() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /**

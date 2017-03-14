@@ -63,8 +63,7 @@ public class PersonResource {
     public String getPersonByID(@PathParam("id") long id) throws PersonNotFoundException {
         try{
         Person p = f.getPerson(id);
-        String jPerson = gson.toJson(p);
-        return jPerson;
+        return gson.toJson(p);
         }catch(NoResultException ex){
             ex.printStackTrace();
             throw new PersonNotFoundException("Not able to find a person with id " + id);
@@ -79,13 +78,13 @@ public class PersonResource {
         throw new UnsupportedOperationException();
     }
 
-    @GET
-    @Path("contactinfo/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getContactByID() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
+//    @GET
+//    @Path("contactinfo/{id}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String getContactByID() {
+//        //TODO return proper representation object
+//        throw new UnsupportedOperationException();
+//    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

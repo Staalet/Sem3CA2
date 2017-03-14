@@ -7,7 +7,6 @@ package schemaCreater;
 
 import entities.Person;
 import facade.FacadeCurrent;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
@@ -22,5 +21,8 @@ public class testClass {
         p.setLastName("bjarne");
         p.setEmail("sf@hej.com");       
         fc.addPerson(p);
+        System.out.println("person added in database");
+        
+      
     }
 }
