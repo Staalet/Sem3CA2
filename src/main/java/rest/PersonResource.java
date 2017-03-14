@@ -51,11 +51,15 @@ public class PersonResource {
     FacadeCurrent f = new FacadeCurrent(Persistence.createEntityManagerFactory("pu"));
 
     @GET
+    public String Hello() {
+        return "Hello from Person Resource";
+    }
+
+    @GET
     @Path("complete")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Person> getAllPersons() {
         throw new UnsupportedOperationException();
-
     }
 
     @GET
@@ -63,7 +67,7 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getPersonByID(@PathParam("id") long id) throws PersonNotFoundException {
         Person p = f.getPerson(id);
-        if(p == null){
+        if (p == null) {
             throw new PersonNotFoundException("No Person found");
         }
         return gson.toJson(p);
@@ -77,14 +81,16 @@ public class PersonResource {
         throw new UnsupportedOperationException();
     }
 
-
     @DELETE
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void deletePerson(@PathParam("id")long id) {
+    public void deletePerson(@PathParam("id") long id) throws PersonNotFoundException {
         Person p = f.getPerson(id);
-        f.deletePerson(p.getId());
-        
+        if (p != null) {
+            f.deletePerson(p.getId());
+        } else {
+            throw new PersonNotFoundException("Found no person to delete. The person may not excist.");
+        }
     }
 
     /**
