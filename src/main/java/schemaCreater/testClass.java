@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
  */
 public class testClass {
     public static void main(String[] args) {
-        FacadeCurrent fc = new FacadeCurrent();
+        FacadeCurrent fc = new FacadeCurrent(emf);
         Person p = new Person();
         p.setFirstName("bjarne");
         p.setLastName("bjarne");
