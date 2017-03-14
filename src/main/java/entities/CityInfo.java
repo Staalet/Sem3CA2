@@ -5,8 +5,10 @@
  */
 package entities;
 
+import static entities.CityInfo_.zip;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,9 +24,7 @@ public class CityInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private int zipCode;
+    private String zip;
     private String city;
     @OneToMany(mappedBy = "cityinfo")
     private List<Address> adresses;
@@ -32,26 +32,18 @@ public class CityInfo implements Serializable {
     public CityInfo() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    /**
+     * @return the zip
+     */
+    public String getZip() {
+        return zip;
     }
 
     /**
-     * @return the zipCode
+     * @param zip the zip to set
      */
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    /**
-     * @param zipCode the zipCode to set
-     */
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     /**
