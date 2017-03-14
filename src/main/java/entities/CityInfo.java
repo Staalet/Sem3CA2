@@ -19,9 +19,6 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class CityInfo implements Serializable {
-    
-    public CityInfo(){
-    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,6 +28,10 @@ public class CityInfo implements Serializable {
     private String city;
     @OneToMany(mappedBy = "cityinfo")
     private List<Address> adresses;
+
+    public CityInfo() {
+    }
+
     public Long getId() {
         return id;
     }

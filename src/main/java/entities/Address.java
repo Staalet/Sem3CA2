@@ -20,9 +20,6 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Address extends InfoEntity implements Serializable {
-    
-    public Address(){
-    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,9 +28,13 @@ public class Address extends InfoEntity implements Serializable {
     private String Street;
     private String AdditionalInfo;
     @OneToMany(mappedBy = "adress")
-    private List <InfoEntity> infoentity;
+    private List<InfoEntity> infoentity;
     @ManyToOne
     private CityInfo cityinfo;
+
+    public Address() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -69,5 +70,5 @@ public class Address extends InfoEntity implements Serializable {
     public void setAdditionalInfo(String AdditionalInfo) {
         this.AdditionalInfo = AdditionalInfo;
     }
-    
+
 }
