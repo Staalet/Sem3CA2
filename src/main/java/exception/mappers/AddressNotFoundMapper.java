@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ExceptionMappers;
+package exception.mappers;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import exception.AddressNotFoundException;
+import exception.ErrorMessage;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 
@@ -21,10 +22,10 @@ public class AddressNotFoundMapper implements ExceptionMapper<exception.AddressN
     static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     @Override
     public Response toResponse(AddressNotFoundException e) {
-        JsonObject job = new JsonObject();
-        job.addProperty("Status", 404);
-        job.addProperty("Message", e.getMessage());
-        return Response.status(404).entity(job).build();
+        ErrorMessage errMsg = new ErrorMessage(404, e.getMessage());
+        return Response.status(404)
+                .entity(gson.toJson(errMsg))
+                .type(MediaType.APPLICATION_JSON).build();
     }
     
 }

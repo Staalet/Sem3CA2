@@ -8,8 +8,10 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entities.Person;
+import exception.PersonNotFoundException;
 import facade.FacadeCurrent;
 import java.util.List;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -58,10 +60,15 @@ public class PersonResource {
     @GET
     @Path("complete/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getPersonByID(@PathParam("id") long id) {
+    public String getPersonByID(@PathParam("id") long id) throws PersonNotFoundException {
+        try{
         Person p = f.getPerson(id);
         String jPerson = gson.toJson(p);
         return jPerson;
+        }catch(NoResultException ex){
+            ex.printStackTrace();
+            throw new PersonNotFoundException("Not able to find a person with id " + id);
+        }
     }
 
     @GET
