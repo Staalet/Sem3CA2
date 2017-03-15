@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
  */
 public class testClass {
     public static void main(String[] args) {
-        FacadeCurrent fc = new FacadeCurrent(Persistence.createEntityManagerFactory("pu"));
+        FacadeCurrent fc = new FacadeCurrent(Persistence.createEntityManagerFactory("pu_test"));
         Person p = new Person();
         p.setFirstName("bjarne");
         p.setLastName("bjarne");
