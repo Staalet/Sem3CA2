@@ -140,5 +140,15 @@ public class FacadeCurrent {
         }
 
     }
-
+    
+    public List<Person> getAllPersons()
+    {
+        EntityManager em = emf.createEntityManager();
+        
+        try {
+            return em.createNamedQuery("Person.findAll").getResultList(); 
+        } finally {
+            em.close(); 
+        }
+    }
 }
