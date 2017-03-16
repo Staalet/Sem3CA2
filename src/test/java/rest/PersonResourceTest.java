@@ -78,7 +78,7 @@ public class PersonResourceTest {
     
      @Test
     public void basicPingTest() {
-        given().when().get("/api/person/complete/1").then().statusCode(200);
+        given().when().get("/api/person/complete/").then().statusCode(200);
     }
 
     @Test
