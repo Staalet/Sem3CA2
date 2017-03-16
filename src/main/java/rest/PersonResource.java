@@ -58,8 +58,13 @@ public class PersonResource {
     @GET
     @Path("complete")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Person> getAllPersons() {
-        throw new UnsupportedOperationException();
+    public String getAllPersons() throws PersonNotFoundException {
+        List<Person> lp = f.getAllPersons();
+        if(lp == null){
+            throw new PersonNotFoundException("Person not found");
+        }
+        String json = gson.toJson(lp); 
+        return json;
     }
 
     @GET
@@ -68,7 +73,7 @@ public class PersonResource {
     public String getPersonByID(@PathParam("id") long id) throws PersonNotFoundException {
         Person p = f.getPerson(id);
         if (p == null) {
-            throw new PersonNotFoundException("No Person found");
+            throw new PersonNotFoundException("Person not found");
         }
         return gson.toJson(p);
     }
@@ -78,10 +83,14 @@ public class PersonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String addPerson(String json) {
-
-        Person p = gson.fromJson(json, Person.class);
-        f.addPerson(p);
-        return gson.toJson(p);
+            Person p = gson.fromJson(json, Person.class);
+        try {
+            f.addPerson(p);
+            return gson.toJson(p);
+        } catch (Exception e){
+            e.printStackTrace();
+            return "";
+        }
     }
 
     @DELETE
@@ -95,6 +104,7 @@ public class PersonResource {
             throw new PersonNotFoundException("Found no person to delete. The person may not excist.");
         }
     }
+
     @PUT
     @Path("editPerson")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -103,7 +113,7 @@ public class PersonResource {
 
         Person p = gson.fromJson(json, Person.class);
         f.editPerson(p);
-
+        
         return gson.toJson(p);
     }
 }

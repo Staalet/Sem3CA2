@@ -21,6 +21,11 @@ public class FacadeCurrent {
 
     EntityManagerFactory emf;
 
+    public List<Person> getAllPersons(){
+        EntityManager em = emf.createEntityManager();
+        return em.createNamedQuery("Person.findAll").getResultList();
+    }
+    
     public Person getPerson(long id) { //Kunne alternativt være telefonnummer
         EntityManager em = emf.createEntityManager();
 
@@ -76,7 +81,7 @@ public class FacadeCurrent {
             em.getTransaction().begin();
             em.persist(p);
             em.getTransaction().commit();
-        } finally {
+        }finally{
             em.close();
         }
     }
