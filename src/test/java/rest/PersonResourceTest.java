@@ -63,7 +63,9 @@ public class PersonResourceTest {
 
     @Test
     public void basicPingTest() {
+
         given().when().get("/api/person/complete/1").then().statusCode(404);
+
     }
 
     @Test

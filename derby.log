@@ -1,13 +1,20 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
 Thu Mar 16 16:25:27 CET 2017:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-015a-d7b9-4266-000005848358 
 on database directory C:\Users\Staal\Documents\CA2\Sem3CA2\memory\ca2db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
 Loaded from file:/C:/Users/Staal/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+=======
+Thu Mar 16 17:09:23 CET 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-015a-d7e1-7b39-000007249618 
+on database directory /Users/christian/NetBeansProjects/CA/Sem3CA2/memory/ca2db with class loader sun.misc.Launcher$AppClassLoader@4aa298b7 
+Loaded from file:/Users/christian/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+>>>>>>> c7dd2d2706db0e536250e19adc381bc2f6ea223e
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_101-b13
-user.dir=C:\Users\Staal\Documents\CA2\Sem3CA2
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
+java.runtime.version=1.8.0_102-b14
+user.dir=/Users/christian/NetBeansProjects/CA/Sem3CA2
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.12.3
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
