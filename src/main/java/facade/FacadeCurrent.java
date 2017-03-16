@@ -7,7 +7,6 @@ import entities.Person;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.TypedQuery;
 
 /**
  *
@@ -21,11 +20,15 @@ public class FacadeCurrent {
 
     EntityManagerFactory emf;
 
-    public List<Person> getAllPersons(){
+    public List<Person> getAllPersons() {
         EntityManager em = emf.createEntityManager();
-        return em.createNamedQuery("Person.findAll").getResultList();
+        try {
+            return em.createNamedQuery("Person.findAll").getResultList();
+        } finally {
+            em.close();
+        }
     }
-    
+
     public Person getPerson(long id) { //Kunne alternativt være telefonnummer
         EntityManager em = emf.createEntityManager();
 
@@ -81,7 +84,7 @@ public class FacadeCurrent {
             em.getTransaction().begin();
             em.persist(p);
             em.getTransaction().commit();
-        }finally{
+        } finally {
             em.close();
         }
     }
@@ -131,12 +134,12 @@ public class FacadeCurrent {
 
     public List<Company> getCompanies(int employees) { //Gets the companies with x number of employees and above. 
         EntityManager em = emf.createEntityManager();
-        
+
         try {
-           return em.createQuery("SELECT u FROM company WHERE numEmployees <" + employees).getResultList(); 
-           
+            return em.createQuery("SELECT u FROM company WHERE numEmployees <" + employees).getResultList();
+
         } finally {
-            em.close(); 
+            em.close();
         }
 
     }
