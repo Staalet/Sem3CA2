@@ -15,6 +15,6 @@ public class CreateSchema {
 
     public static void main(String[] args) {
         Persistence.createEntityManagerFactory("pu");
-        Persistence.generateSchema("pu", null);
+        Persistence.generateSchema("pu", null);       
     }
 }
