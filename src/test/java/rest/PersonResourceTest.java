@@ -7,19 +7,28 @@ package rest;
 
 import entities.Person;
 import facade.FacadeCurrent;
+import static groovy.xml.Entity.times;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import io.restassured.parsing.Parser;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Persistence;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.Matchers.containsString;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import static org.mockito.Matchers.anyInt;
+import org.mockito.Mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import org.mockito.runners.MockitoJUnitRunner;
+import schemaCreater.CreateSchema;
 
 /**
  *
@@ -27,17 +36,19 @@ import static org.junit.Assert.*;
  */
 public class PersonResourceTest {
 
+    private static FacadeCurrent fc;
+
     public PersonResourceTest() {
     }
 
     @BeforeClass
     public static void setUpClass() {
-
+        fc = new FacadeCurrent(Persistence.createEntityManagerFactory("pu_test"));
         Persistence.generateSchema("pu_test", null);
 
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8084;
-        RestAssured.basePath = "/Sem3CA2";
+        RestAssured.basePath = "/Sem3CA2/";
         RestAssured.defaultParser = Parser.JSON;
 
     }
@@ -48,7 +59,7 @@ public class PersonResourceTest {
 
     @Before
     public void setUp() {
-        FacadeCurrent fc = new FacadeCurrent(Persistence.createEntityManagerFactory("pu_test"));
+        Persistence.createEntityManagerFactory("pu_test");
         Person p = new Person();
         p.setFirstName("John");
         p.setLastName("Doe");
@@ -59,31 +70,13 @@ public class PersonResourceTest {
 
     @After
     public void tearDown() {
-    }
-
-    @Test
-    public void basicPingTest() {
-
-        given().when().get("/api/person/complete/1").then().statusCode(404);
-
+        Persistence.createEntityManagerFactory("pu_test");
+        fc.deletePerson(1);
     }
 
     @Test
     public void getPerson() {
-        System.out.println("Flot ja");
-
-        given()
-                .when()
-                .get("/person/complete/1")
-                .then()
-                .body("Person.firstName", hasItem("bjarne"));
-
-        System.out.println("Ja flot");
+        given().when().get("/api/person/complete/1").then().statusCode(200);
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
 }

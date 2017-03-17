@@ -1,12 +1,30 @@
 
-var url = "http://localhost:8084/Sem3CA2/api/person/addPerson";
+//var url = "http://localhost:8084/Sem3CA2/api/person/addPerson";
+//
+//var promise = fetch(url, {method: 'post'});
+//promise.then(function (response) {
+//    return response.text();
+//
+//
+fetch('http://localhost:8084/Sem3CA2/api/person/addPerson/', {
+	method: 'POST', 
+	mode: 'cors', 
+	redirect: 'follow',
+	headers: new Headers({
+		'Content-Type': 'application/json'
+	})
+})
+        .then(function() {
+    fetch('http://localhost:8084/Sem3CA2/api/person/complete/{1}').then(function(response){
+       return response.json(jsonobj); 
+    }).then(function(j){
+        console.log(j);
+    });
+});
 
-var promise = fetch(url, {method: 'post'});
-promise.then(function (response) {
-    return response.text();
 
 
-    (function () {
+var jsonobj = (function () {
         function toJSONString(form) {
             var obj = {};
             var elements = form.querySelectorAll("input");
@@ -33,4 +51,3 @@ promise.then(function (response) {
             }, false);
         });
     })();
-});
