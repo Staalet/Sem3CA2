@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rest;
+package mockitio;
 
 import entities.Person;
 import exception.PersonNotFoundException;
 import facade.FacadeCurrent;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import static jersey.repackaged.com.google.common.base.Predicates.instanceOf;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -19,6 +21,7 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.runners.MockitoJUnitRunner;
+import rest.PersonResource;
 import schemaCreater.CreateSchema;
 
 /**
@@ -43,6 +46,7 @@ public class MockitoTest {
     @Test
     public void getPersonsTest() throws PersonNotFoundException {
 
+        EntityManager em = emf.createEntityManager();
         Person p = new Person();
 
 //        String jsonPerson = "{\n"
@@ -53,13 +57,13 @@ public class MockitoTest {
 //                + "  \"email\": \"sf@hej.com\",\n"
 //                + "  \"phones\": []\n"
 //                + "}";
-        EntityManager em = emf.createEntityManager();
+        
+        when(em.find(Person.class, p.getId())).thenReturn(p);
+        
+        assertThat(f.getPerson(1), instanceOf(Person.class));
+  
 
-        when(em.find(Person.class, p)).thenReturn(p);
-//f.getPerson(1), instanceOf(Person.class
-        assertThat(f.getPerson(1), instanceof(Person.class));
-
-        verify(f).addPerson(p);
+        verify(f).getPerson(1);
 
     }
 
