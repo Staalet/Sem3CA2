@@ -1,4 +1,3 @@
-
 // This piece of ajax art creates a person from forms in html.
 var url = "http://localhost:8084/Sem3CA2/api/person/addPerson";
 var firstnameEl = document.getElementById("firstname");
@@ -26,4 +25,3 @@ document.getElementById("inputForm").onsubmit = function (e) {
         console.log(text);
     });
 };
-

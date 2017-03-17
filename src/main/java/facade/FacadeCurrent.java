@@ -18,7 +18,7 @@ public class FacadeCurrent {
         this.emf = emf;
     }
 
-    EntityManagerFactory emf;
+    private EntityManagerFactory emf;
 
     public List<Person> getAllPersons() {
         EntityManager em = emf.createEntityManager();
