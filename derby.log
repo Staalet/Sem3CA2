@@ -1,8 +1,27 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
 Fri Mar 17 10:42:54 CET 2017:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-015a-dba6-0325-00000581c718 
 on database directory C:\Users\Staal\Documents\CA2\Sem3CA2\memory\ca2db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
 Loaded from file:/C:/Users/Staal/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+=======
+<<<<<<< HEAD
+Fri Mar 17 09:00:58 CET 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-015a-db48-ad5f-00000536a838 
+=======
+<<<<<<< HEAD
+Thu Mar 16 16:25:27 CET 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-015a-d7b9-4266-000005848358 
+on database directory C:\Users\Staal\Documents\CA2\Sem3CA2\memory\ca2db with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/C:/Users/Staal/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+=======
+Thu Mar 16 17:09:23 CET 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-015a-d7e1-7b39-000007249618 
+>>>>>>> 9c917796a13122f63e1685e5bbea6d1a06ef2806
+on database directory /Users/christian/NetBeansProjects/CA/Sem3CA2/memory/ca2db with class loader sun.misc.Launcher$AppClassLoader@4aa298b7 
+Loaded from file:/Users/christian/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+>>>>>>> c7dd2d2706db0e536250e19adc381bc2f6ea223e
+>>>>>>> 9e2c227adafc93409688133dc673a9da18711cf3
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_101-b13
 user.dir=C:\Users\Staal\Documents\CA2\Sem3CA2

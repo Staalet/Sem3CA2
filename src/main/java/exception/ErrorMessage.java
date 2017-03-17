@@ -10,7 +10,7 @@ package exception;
  * @author christian
  */
 public class ErrorMessage {
-    private int code; //<-- Hvad sker der hvis du ikke skriver public eller private på.
+    private int code; 
     private String eMsg;
 
     public ErrorMessage(int code, String eMsg) {
