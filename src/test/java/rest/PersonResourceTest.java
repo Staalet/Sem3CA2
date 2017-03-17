@@ -7,28 +7,15 @@ package rest;
 
 import entities.Person;
 import facade.FacadeCurrent;
-import static groovy.xml.Entity.times;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.given;
 import io.restassured.parsing.Parser;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Persistence;
-import static org.hamcrest.Matchers.containsString;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.runner.RunWith;
-import static org.mockito.Matchers.anyInt;
-import org.mockito.Mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import org.mockito.runners.MockitoJUnitRunner;
-import schemaCreater.CreateSchema;
 
 /**
  *
