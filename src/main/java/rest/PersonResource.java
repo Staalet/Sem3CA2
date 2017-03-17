@@ -24,6 +24,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -82,15 +83,17 @@ public class PersonResource {
     @Path("addPerson")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String addPerson(String json) {
+    public Response addPerson(String json) {
             Person p = gson.fromJson(json, Person.class);
         try {
             f.addPerson(p);
-            return gson.toJson(p);
+            //return gson.toJson(p);
         } catch (Exception e){
             e.printStackTrace();
-            return "";
+            //return "";
+            return Response.status(500).entity("ERROR IN POST").build();
         }
+        return Response.ok(200).entity(gson.toJson(p)).build();
     }
 
     @DELETE
