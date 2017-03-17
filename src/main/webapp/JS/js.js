@@ -1,6 +1,6 @@
 
+// This piece of ajax art creates a person from forms in html.
 var url = "http://localhost:8084/Sem3CA2/api/person/addPerson";
-//var form = document.getElementsByTagName(form)[0];
 var firstnameEl = document.getElementById("firstname");
 var lastnameEl = document.getElementById("lastname");
 var emailEl = document.getElementById("email");
@@ -8,7 +8,7 @@ document.getElementById("inputForm").onsubmit = function (e) {
     var firstname = firstnameEl.value;
     var lastname = lastnameEl.value;
     var email = emailEl.value;
-    console.log("firstname: "+firstname);
+    //console.log("firstname: "+firstname);
     e.preventDefault();
     var promise = fetch(url, {method: 'post',
             headers: {
@@ -26,3 +26,4 @@ document.getElementById("inputForm").onsubmit = function (e) {
         console.log(text);
     });
 };
+
